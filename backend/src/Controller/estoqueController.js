@@ -1,4 +1,4 @@
-const estoque = require("../Model/estoqueModel");
+const estoqueModel = require("../Model/estoqueModel");
 
 async function buscarTodos (req, res) {
     try {
@@ -38,10 +38,14 @@ async function buscarPorId (req, res) {
 async function criar(req, res) {
     try {
         const {
+            id_estoque, 
+            id_produto,
             quantidade_estoque
         } = req.body;
 
         novoEstoque = await estoqueModelModel.criar({
+            id_estoque, 
+            id_produto,
             quantidade_estoque
         });
 

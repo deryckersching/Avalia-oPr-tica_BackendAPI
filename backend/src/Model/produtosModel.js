@@ -15,7 +15,7 @@ async function buscarPorId(id) {
     const sql = `
     SELECT *
     FROM produtos
-    WHERE id = ?;
+    WHERE id_produtos = ?;
     `;
 
     const [resultado] = await bd.execute(sql, [id]);
@@ -23,13 +23,13 @@ async function buscarPorId(id) {
     return resultado;
 };
 
-async function criar(id_produto, nome, categoria, preco, descricao, quantidade_estoque) {
+async function criar(id_produtos, nome, categoria, preco, descricao, quantidade_estoque, quantidade_minima) {
     const sql = `
     INSERT INTO produtos VALUES
-    (2, 'teclado', 'eletrônico', 'R$189.99', 'Peça eletrônica', '34'),
-    (3, 'mouse', 'eletrônico', 'R$69.90', 'Peça eletrônica', '45'),
-    (4, 'livro', 'estudo', 'R$59.90', 'Objeto de estudo e conhecimentos', '149');
-    WHERE (?, ?, ?, ?, ?)
+    (2, 'teclado', 'eletrônico', '189.99', 'Peça Eletrônica', '180', '80'),
+    (3, 'moletom', 'roupa', '69.90', 'Peça de Roupa', '340', '200'),
+    (4, 'guerra fria', 'leitura', '59.90', 'Objeto de estudo e conhecimentos', '149', '100');
+    WHERE (?, ?, ?, ?, ?, ?, ?)
     `;
 
     const [resultado] = await bd.execute(sql, [id]);
@@ -37,13 +37,14 @@ async function criar(id_produto, nome, categoria, preco, descricao, quantidade_e
     return resultado;
 };
 
-async function editar(nome, categoria, preco, descricao, quantidade_estoque) {
+async function editar(nome, categoria, preco, descricao, quantidade_estoque, quantidade_minima) {
     const sql = `
     nome, 
     categoria, 
     preco, 
     descricao, 
-    quantidade_estoque;
+    quantidade_estoque,
+    quantidade_minima;
     `;
 
 

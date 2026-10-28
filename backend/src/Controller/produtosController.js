@@ -42,7 +42,8 @@ async function criar(req, res) {
             categoria, 
             preco, 
             descricao, 
-            quantidade_estoque
+            quantidade_estoque, 
+            quantidade_minima
         } = req.body;
 
         novoProduto = await produtosModel.criar({
@@ -50,7 +51,8 @@ async function criar(req, res) {
             categoria, 
             preco, 
             descricao, 
-            quantidade_estoque
+            quantidade_estoque, 
+            quantidade_minima
         });
 
         return res.status(201).json({

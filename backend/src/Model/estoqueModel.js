@@ -15,7 +15,7 @@ async function buscarPorId(id) {
     const sql = `
     SELECT *
     FROM estoque
-    WHERE id = ?;
+    WHERE id_estoque = ?;
     `;
 
     const [resultado] = await bd.execute(sql, [id]);
@@ -26,8 +26,8 @@ async function buscarPorId(id) {
 async function criar(id_estoque, id_produto, quantidade_estoque) {
     const sql = `
     INSERT INTO estoque VALUES
-    (8, 2, '34'),
-    (9, 3, '45'),
+    (8, 2, '180'),
+    (9, 3, '200'),
     (1, 4, '149');
     WHERE (?, ?, ?)
     `;
